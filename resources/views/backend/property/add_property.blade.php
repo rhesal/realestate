@@ -61,25 +61,25 @@
                                 </div><!-- Row -->
                                 <div class="row">
                                     <div class="col-sm-3">
-                                        <div class="mb-3">
+                                        <div class="mb-3 form-group">
                                             <label class="form-label">Bedrooms</label>
                                             <input type="text" name="bedrooms" class="form-control">
                                         </div>
                                     </div><!-- Col -->
                                     <div class="col-sm-3">
-                                        <div class="mb-3">
+                                        <div class="mb-3 form-group">
                                             <label class="form-label">Bathrooms</label>
                                             <input type="text" name="bathrooms" class="form-control">
                                         </div>
                                     </div><!-- Col -->
                                     <div class="col-sm-3">
-                                        <div class="mb-3">
+                                        <div class="mb-3 form-group">
                                             <label class="form-label">Garage</label>
                                             <input type="text" name="garage" class="form-control">
                                         </div>
                                     </div><!-- Col -->
                                     <div class="col-sm-3">
-                                        <div class="mb-3">
+                                        <div class="mb-3 form-group">
                                             <label class="form-label">Garage Size</label>
                                             <input type="text" name="garage_size" class="form-control">
                                         </div>
@@ -87,25 +87,25 @@
                                 </div><!-- Row -->
                                 <div class="row">
                                     <div class="col-sm-3">
-                                        <div class="mb-3">
+                                        <div class="mb-3 form-group">
                                             <label class="form-label">Address</label>
                                             <input type="text" name="address" class="form-control">
                                         </div>
                                     </div><!-- Col -->
                                     <div class="col-sm-3">
-                                        <div class="mb-3">
+                                        <div class="mb-3 form-group">
                                             <label class="form-label">City</label>
                                             <input type="text" name="city" class="form-control">
                                         </div>
                                     </div><!-- Col -->
                                     <div class="col-sm-3">
-                                        <div class="mb-3">
+                                        <div class="mb-3 form-group">
                                             <label class="form-label">State</label>
                                             <input type="text" name="state" class="form-control">
                                         </div>
                                     </div><!-- Col -->
                                     <div class="col-sm-3">
-                                        <div class="mb-3">
+                                        <div class="mb-3 form-group">
                                             <label class="form-label">Postal Code</label>
                                             <input type="text" name="postal_code" class="form-control">
                                         </div>
@@ -113,19 +113,19 @@
                                 </div><!-- Row -->
                                 <div class="row">
                                     <div class="col-sm-4">
-                                        <div class="mb-3">
+                                        <div class="mb-3 form-group">
                                             <label class="form-label">Property Size</label>
                                             <input type="text" name="property_size" class="form-control">
                                         </div>
                                     </div><!-- Col -->
                                     <div class="col-sm-4">
-                                        <div class="mb-3">
+                                        <div class="mb-3 form-group">
                                             <label class="form-label">Property Video</label>
                                             <input type="text" name="property_video" class="form-control">
                                         </div>
                                     </div><!-- Col -->
                                     <div class="col-sm-4">
-                                        <div class="mb-3">
+                                        <div class="mb-3 form-group">
                                             <label class="form-label">Neighborhood</label>
                                             <input type="text" name="neighborhood" class="form-control">
                                         </div>
@@ -133,14 +133,14 @@
                                 </div><!-- Row -->
                                 <div class="row">
                                     <div class="col-sm-6">
-                                        <div class="mb-3">
+                                        <div class="mb-3 form-group">
                                             <label class="form-label">Latitude</label>
                                             <input type="text" name="latitude" class="form-control">
                                             <a href="https://www.latlong.net/convert-address-to-lat-long.html" target="_blank">Go here to get Latitude from address</a>
                                         </div>
                                     </div><!-- Col -->
                                     <div class="col-sm-6">
-                                        <div class="mb-3">
+                                        <div class="mb-3 form-group">
                                             <label class="form-label">Longitude</label>
                                             <input type="text" name="longitude" class="form-control">
                                             <a href="https://www.latlong.net/convert-address-to-lat-long.html" target="_blank">Go here to get Longitude from address</a>
@@ -149,7 +149,7 @@
                                 </div><!-- Row -->
                                 <div class="row">
                                     <div class="col-sm-4">
-                                        <div class="mb-3">
+                                        <div class="mb-3 form-group">
                                             <label class="form-label">Property Type</label>
                                             <select name="ptype_id" class="form-select" id="exampleFormControlSelect1">
                                                 <option selected="" disabled="">Select Type</option>
@@ -160,7 +160,7 @@
                                         </div>
                                     </div><!-- Col -->
                                     <div class="col-sm-4">
-                                        <div class="mb-3">
+                                        <div class="mb-3 form-group">
                                             <label class="form-label">Property Amenities</label>
                                             <select name="amenities_id[]" class="js-example-basic-multiple form-select" multiple="multiple" data-width="100%">
                                                 @foreach ($amenities as $amenitie)
@@ -170,7 +170,7 @@
                                         </div>
                                     </div><!-- Col -->
                                     <div class="col-sm-4">
-                                        <div class="mb-3">
+                                        <div class="mb-3 form-group">
                                             <label class="form-label">Agent</label>
                                             <select name="agent_id" class="form-select" id="exampleFormControlSelect1">
                                                 <option selected="" disabled="">Select Agent</option>
@@ -183,21 +183,21 @@
                                 </div><!-- Row -->
                                 <div class="row">
                                     <div class="col-sm-12">
-                                        <div class="mb-3">
+                                        <div class="mb-3 form-group">
                                             <label class="form-label">Short Description</label>
-                                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                            <textarea name="short_descp" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                                         </div>
                                     </div><!-- Col -->
                                     <div class="col-sm-12">
                                         <div class="mb-3">
                                             <label class="form-label">Long Description</label>
-                                            <textarea class="form-control" name="tinymce" id="tinymceExample" rows="10"></textarea>
+                                            <textarea name="long_descp" class="form-control" name="tinymce" id="tinymceExample" rows="10"></textarea>
                                         </div>
                                     </div><!-- Col -->
                                 </div><!-- Row -->
                                 <div class="row">
                                     <div class="col-sm-12">
-                                        <div class="mb-3">
+                                        <div class="mb-3 form-group">
                                             <div class="form-check form-check-inline">
                                                 <input type="checkbox" name="featured" value="1" class="form-check-input" id="checkInline1">
                                                 <label class="form-check-label" for="checkInline1">
@@ -216,7 +216,7 @@
 <!-- /////////// Facilities ////////////// -->
                                 <div class="row add_item">
                                     <div class="col-md-4">
-                                        <div class="mb-3">
+                                        <div class="mb-3 form-group">
                                             <label for="facility_name" class="form-label">Facilities </label>
                                             <select name="facility_name[]" id="facility_name" class="form-control">
                                                     <option value="">Select Facility</option>
@@ -235,7 +235,7 @@
                                         </div>
                                     </div>
                                     <div class="col-md-4">
-                                        <div class="mb-3">
+                                        <div class="mb-3 form-group">
                                             <label for="distance" class="form-label">Distance</label>
                                             <input type="text" name="distance[]" id="distance" class="form-control" placeholder="Distance (Km)">
                                         </div>
