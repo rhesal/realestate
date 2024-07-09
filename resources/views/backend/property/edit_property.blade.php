@@ -211,6 +211,101 @@
     </div>
 </div>
 
+{{-- /// Property Main Thumbnail Image Update /// --}}
+
+<div class="page-content" style="margin-top: -35px;">
+    <div class="row profile-body">
+    <!-- middle wrapper start -->
+        <div class="col-md-12 col-xl-12 middle-wrapper">
+            <div class="row">
+                <div class="card">
+                    <div class="card-body">
+                        <h6 class="card-title">Main Thumbnail Image</h6>
+                        <form id="myForm" method="POST" action="{{ route('update.property.thumbnail') }}" class="forms-sample" enctype="multipart/form-data">
+                            @csrf
+                            <input type="hidden" name="id" value="{{ $property->id }}">
+                            <input type="hidden" name="old_img" value="{{ $property->property_thumbnail }}">
+                            <div class="mb-3 row">
+                                <div class="col-sm-6 form-group">
+                                    <label class="form-label">Main Thumbnail</label>
+                                    <input type="file" name="property_thumbnail" class="form-control" onchange="mainThumbUrl(this)">
+                                    <img src="" id="mainThmb" style="margin-top: 10px;">
+                                </div>
+                                <div class="col-sm-6 form-group">
+                                    <label class="form-label"></label>
+                                    <img src="{{ asset($property->property_thumbnail) }}" style="width: 100px; height: 100px;">
+                                </div>
+                            </div><!-- Col -->
+                            <button type="submit" class="btn btn-primary submit">Save Changes</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{{-- /// End Property Main Thumbnail Image Update /// --}}
+
+{{-- /// Property Multi Image Update /// --}}
+<div class="page-content" style="margin-top: -35px;">
+    <div class="row profile-body">
+    <!-- middle wrapper start -->
+        <div class="col-md-12 col-xl-12 middle-wrapper">
+            <div class="row">
+                <div class="card">
+                    <div class="card-body">
+                        <h6 class="card-title">Edit Multiple Image</h6>
+                        <form id="myForm" method="POST" action="{{ route('update.property.multiimage') }}" class="forms-sample" enctype="multipart/form-data">
+                            @csrf
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>No. Serial</th>
+                                        <th>Image</th>
+                                        <th>Change Image</th>
+                                        <th>Delete</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($multiImage as $key => $img)
+                                    <tr>
+                                        <td>{{ $key+1 }}</td>
+                                        <td class="py-1"><img src="{{ asset($img->photo_name) }}" style="width:50px; height: 50px;"></td>
+                                        <td style="width: 100%; overflow: auto;">
+                                            <input type="file" class="form-control" name="multi_img[{{ $img->id }}]" id="" style="width: 84%; float: left;">
+                                            <input type="submit" class="px-4 form-control btn btn-primary" value="Update Image" style="width: 15%; float: right;">
+                                        </td>
+                                        <td><a href="{{ route('delete.property.multiimage',$img->id) }}" class="btn btn-danger" id="delete">Delete</td>
+                                    </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </form>
+                        <form id="myForm" method="POST" action="{{ route('store.new.multiimage') }}" class="forms-sample" enctype="multipart/form-data">
+                            @csrf
+                            <input type="hidden" name="imageid" value="{{ $property->id }}">
+                            <table class="table table-striped">
+                                <tbody>
+                                    <tr style="width: 100%; overflow: auto;">
+                                        <td style="width: 10.5%; text-align: right"><label class="form-label">Add New Image</label></td>
+                                        <td style="width: 70.5%;">
+                                            <input type="file" class="form-control" name="multi_img">
+                                        </td>
+                                        <td style="width: 20%; padding-left: 0px">
+                                            <input type="submit" class="px-4 btn btn-info" value="Add Image">
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{{-- /// End Property Multi Image Update /// --}}
+
 <script type="text/javascript">
     $(document).ready(function (){
         $('#myForm').validate({
