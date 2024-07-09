@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use Carbon\Carbon;
 use App\Models\User;
-use App\Models\Facilty;
+use App\Models\Facility;
 use App\Models\Property;
 use App\Models\Amenities;
 use App\Models\MultiImage;
@@ -98,7 +98,7 @@ class PropertyController extends Controller
         $facilities = Count($request->facility_name);
         if ($facilities != NULL) {
             for ($i=0; $i < $facilities; $i++) {
-                $fcount = new Facilty();
+                $fcount = new Facility();
                 $fcount->property_id = $property_id;
                 $fcount->facility_name = $request->facility_name[$i];
                 $fcount->distance = $request->distance[$i];
@@ -116,6 +116,7 @@ class PropertyController extends Controller
     }
 
     public function EditProperty($id){
+        $facilities = Facility::where('property_id', $id)->get();
         $property = Property::findOrFail($id);
         $type = $property->amenities_id;
         $property_amnt = explode(",",$type);
@@ -128,7 +129,7 @@ class PropertyController extends Controller
                             ->latest()
                             ->get();
 
-        return view('backend.property.edit_property', compact('property','propertyType','amenities','activeAgent','property_amnt','multiImage'));
+        return view('backend.property.edit_property', compact('property','propertyType','amenities','activeAgent','property_amnt','multiImage','facilities'));
     }
 
     public function UpdateProperty(Request $request) {
@@ -262,5 +263,31 @@ class PropertyController extends Controller
         );
 
         return redirect()->back()->with($notification);
+    }
+
+    public function UpdatePropertyFacilities(Request $request) {
+        $prop_id = $request->id;
+
+        if ($request->facility_name == NULL) {
+            return redirect()->back();
+        } else {
+            Facility::where('property_id', $prop_id)->delete();
+            $facilities = Count($request->facility_name);
+            for ($i=0; $i < $facilities; $i++) {
+                $fcount = new Facility();
+                $fcount->property_id = $prop_id;
+                $fcount->facility_name = $request->facility_name[$i];
+                $fcount->distance = $request->distance[$i];
+                $fcount->save();
+            }
+        }
+
+        $notification = array(
+            'message' => 'Property Facility Updated Successfully',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->back()->with($notification);
+        
     }
 }
