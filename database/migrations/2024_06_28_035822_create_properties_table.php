@@ -28,7 +28,6 @@ return new class extends Migration
             $table->string('bathrooms')->nullable();
             $table->string('garage')->nullable();
             $table->string('garage_size')->nullable();
-            $table->string('amenities_name')->nullable();
             $table->string('property_size')->nullable();
             $table->string('property_video')->nullable();
             $table->string('address')->nullable();

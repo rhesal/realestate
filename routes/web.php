@@ -7,6 +7,8 @@ use App\Http\Controllers\AgentController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\Backend\PropertyTypeController;
 use App\Http\Controllers\Backend\PropertyController;
+use App\Http\Middleware\RedirectIfAuthenticated;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -46,6 +48,7 @@ Route::middleware('auth')->group(function () {
 require __DIR__.'/auth.php';
 
 Route::get('/admin/login', [AdminController::class, 'AdminLogin'])->name('admin.login');
+Route::get('/agent/login', [AgentController::class, 'AgentLogin'])->name('agent.login');
 
 // Admin Group Middleware
 Route::middleware(['auth','role:admin'])->group(function(){
@@ -57,6 +60,8 @@ Route::middleware(['auth','role:admin'])->group(function(){
     Route::post('/admin/update/password', [AdminController::class, 'AdminUpdatePassword'])->name('admin.update.password');
 });
 // End Group Admin Middleware
+
+Route::get('/admin/login', [AdminController::class, 'AdminLogin'])->name('admin.login')->middleware(RedirectIfAuthenticated::class);
 
 // Agent Group Middleware
 Route::middleware(['auth','role:agent'])->group(function(){
@@ -92,6 +97,7 @@ Route::middleware(['auth','role:admin'])->group(function(){
         Route::get('/all/property', 'AllProperty')->name('all.property');
         Route::get('/add/property', 'AddProperty')->name('add.property');
         Route::post('/store/property', 'StoreProperty')->name('store.property');
+        Route::get('/details/property/{id}', 'DetailsProperty')->name('details.property');
         Route::get('/edit/property/{id}', 'EditProperty')->name('edit.property');
         Route::post('/update/property', 'UpdateProperty')->name('update.property');
         Route::post('/update/property/thumbnail', 'UpdatePropertyThumbnail')->name('update.property.thumbnail');
@@ -100,6 +106,8 @@ Route::middleware(['auth','role:admin'])->group(function(){
         Route::post('/store/new/multiimage', 'StoreNewMultiImage')->name('store.new.multiimage');
         Route::get('/delete/property/{id}', 'DeleteProperty')->name('delete.property');
         Route::get('/delete/property/multiimage/{id}', 'DeletePropertyMultiImage')->name('delete.property.multiimage');
+        Route::post('/inactive/property', 'InActiveProperty')->name('inactive.property');
+        Route::post('/active/property', 'ActiveProperty')->name('active.property');
     });
 });
 // End Group Admin Middleware

@@ -13,4 +13,8 @@ class Property extends Model
     public function type(){
         return $this->belongsTo(PropertyType::class, 'ptype_id','id');
     }
+
+    public function agent(){
+        return $this->belongsTo(User::class, 'agent_id','id');
+    }
 }
