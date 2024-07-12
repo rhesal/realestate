@@ -121,7 +121,7 @@ class PropertyTypeController extends Controller
 
         $notification = array(
             'message' => 'Amenities Deleted Successfully',
-            'alert-type' => 'error'
+            'alert-type' => 'success'
         );
 
         return redirect()->back()->with($notification);

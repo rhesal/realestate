@@ -49,6 +49,7 @@ require __DIR__.'/auth.php';
 
 Route::get('/admin/login', [AdminController::class, 'AdminLogin'])->name('admin.login');
 Route::get('/agent/login', [AgentController::class, 'AgentLogin'])->name('agent.login');
+Route::post('/agent/register', [AgentController::class, 'AgentRegister'])->name('agent.register');
 
 // Admin Group Middleware
 Route::middleware(['auth','role:admin'])->group(function(){
@@ -66,6 +67,11 @@ Route::get('/admin/login', [AdminController::class, 'AdminLogin'])->name('admin.
 // Agent Group Middleware
 Route::middleware(['auth','role:agent'])->group(function(){
     Route::get('/agent/dashboard', [AgentController::class, 'AgentDashboard'])->name('agent.dashboard');
+    Route::get('/agent/logout', [AgentController::class, 'AgentLogout'])->name('agent.logout');
+    Route::get('/agent/profile', [AgentController::class, 'AgentProfile'])->name('agent.profile');
+    Route::post('/agent/profile/store', [AgentController::class, 'AgentProfileStore'])->name('agent.profile.store');
+    Route::get('/agent/change/password', [AgentController::class, 'AgentChangePassword'])->name('agent.change.password');
+    Route::post('/agent/update/password', [AgentController::class, 'AgentUpdatePassword'])->name('agent.update.password');
 });
 // End Group Agent Middleware
 
@@ -109,7 +115,17 @@ Route::middleware(['auth','role:admin'])->group(function(){
         Route::post('/inactive/property', 'InActiveProperty')->name('inactive.property');
         Route::post('/active/property', 'ActiveProperty')->name('active.property');
     });
+
+    // Agent All Route from Admin
+    Route::controller(AdminController::class)->group(function(){
+        Route::get('/all/agent', 'AllAgent')->name('all.agent');
+        Route::get('/add/agent', 'AddAgent')->name('add.agent');
+        Route::post('/store/agent', 'StoreAgent')->name('store.agent');
+        Route::get('/edit/agent/{id}', 'EditAgent')->name('edit.agent');
+        Route::post('/update/agent', 'UpdateAgent')->name('update.agent');
+        Route::get('/delete/agent/{id}', 'DeleteAgent')->name('delete.agent');
 });
 // End Group Admin Middleware
 
 
+});
